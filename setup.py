@@ -22,7 +22,7 @@ setup(
     versioning='build-id',
     author='Will Bengtson',
     keywords='cloudtrail',
-    url='https://github.com/netflix-skunkworks/cloudtrail-anomaly',
+    url='https://github.com/andywickersham/cloudtrail-anomaly',
     setup_requires=['setupmeta'],
     python_requires='>=3.6',
     install_requires=install_requires,
