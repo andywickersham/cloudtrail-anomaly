@@ -96,13 +96,13 @@ COMMENT 'CloudTrail table for {ct_bucket}'
 ROW FORMAT SERDE 'com.amazon.emr.hive.serde.CloudTrailSerde'
 STORED AS INPUTFORMAT 'com.amazon.emr.cloudtrail.CloudTrailInputFormat'
 OUTPUTFORMAT 'org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat'
-LOCATION 's3://{ct_bucket}/{ct_bucket_prefix}/{account_number}/CloudTrail/'
+LOCATION 's3://{ct_bucket}/CloudTrail/AWSLogs/{org_id}/{account_number}/CloudTrail/'
 TBLPROPERTIES ('classification'='cloudtrail');"""
 
     athena_query = query_string.format(
         account_number=account_number,
         ct_bucket=config.get('aws', {}).get('athena', {}).get('cloudtrailBucket', 'cloudtrailbucket'), 
-        ct_bucket_prefix=str(config.get('aws', {}).get('athena', {}).get('cloudtrailBucketPrefix', 'AWSLogs')))
+        org_id=config.get('aws', {}).get('orgId', ''))
 
     file_name = query_athena(config, athena_query, cloudaux)
 
