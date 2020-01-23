@@ -206,7 +206,7 @@ def athena(ctx, accounts):
         log.info('Received {} accounts from command line'.format(len(accounts)))
 
     for account in accounts:        
-        file_name = create_table(ctx.config, accounts[0], ca_athena)
+        file_name = create_table(ctx.config, account, ca_athena)
 
         if not file_name:
             log.error("Execution failed or timed out for account {}".format(account))
