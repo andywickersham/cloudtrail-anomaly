@@ -102,7 +102,7 @@ TBLPROPERTIES ('classification'='cloudtrail');"""
     athena_query = query_string.format(
         account_number=account_number,
         ct_bucket=config.get('aws', {}).get('athena', {}).get('cloudtrailBucket', 'cloudtrailbucket'), 
-        org_id=config.get('aws', {}).get('orgId', ''))
+        org_id=config.get('aws', {}).get('orgId', 'o-12345'))
 
     file_name = query_athena(config, athena_query, cloudaux)
 
